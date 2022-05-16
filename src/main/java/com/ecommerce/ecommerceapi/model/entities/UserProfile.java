@@ -33,10 +33,15 @@ public class UserProfile implements Serializable {
     @Column(unique = true)
     private String email;
     private String phone;
+<<<<<<< HEAD
     private String gender;
     private String addressOne;
     private String addressTwo;
 
+=======
+    private String addressOne;
+    private String addressTwo;
+>>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
     @Column(unique = true)
     private String userId;
     @CreationTimestamp

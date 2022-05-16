@@ -7,10 +7,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+<<<<<<< HEAD
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource("classpath:application-${spring.profiles.active:default}.properties")
+=======
+
+@SpringBootApplication
+>>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 public class ECommerceApiApplication {
 
 	public static void main(String[] args) {

@@ -3,7 +3,10 @@ package com.ecommerce.ecommerceapi.api;
 import com.ecommerce.ecommerceapi.model.JwtRequest;
 import com.ecommerce.ecommerceapi.model.JwtResponse;
 import com.ecommerce.ecommerceapi.model.entities.User;
+<<<<<<< HEAD
 import com.ecommerce.ecommerceapi.model.entities.UserProfile;
+=======
+>>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 import com.ecommerce.ecommerceapi.services.User_ServiceImpl;
 import com.ecommerce.ecommerceapi.utils.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -35,10 +38,17 @@ public class UserController {
 
 
     @PostMapping(value="/signup")
+<<<<<<< HEAD
     public ResponseEntity<User> signupUser(@RequestBody User user){
         //Creating URI that would be passed into the response entity .created method
         log.info("hey");
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/users/signup/user").toUriString());
+=======
+    public ResponseEntity<User> signup(@RequestBody User user){
+        //Creating URI that would be passed into the response entity .created method
+        log.info("hey");
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/users/signup").toUriString());
+>>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 
         return ResponseEntity.created(uri).body(user_service.saveUser(user));
     }
