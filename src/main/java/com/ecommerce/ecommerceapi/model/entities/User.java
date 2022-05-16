@@ -33,11 +33,14 @@ public class User implements Serializable {
     private String username;
     private  String password;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private String firstName;
     private String lastName;
     private String phone;
     private String gender;
     private String address;
+=======
+>>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 =======
 >>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 

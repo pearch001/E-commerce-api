@@ -27,10 +27,15 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private Long price;
     private Long merchantId;
     private String productionCountry;
     private String imageUrl;
+=======
+    private Long merchantId;
+    private String productionCountry;
+>>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 =======
     private Long merchantId;
     private String productionCountry;

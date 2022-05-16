@@ -4,7 +4,10 @@ import com.ecommerce.ecommerceapi.model.JwtRequest;
 import com.ecommerce.ecommerceapi.model.JwtResponse;
 import com.ecommerce.ecommerceapi.model.entities.User;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.ecommerce.ecommerceapi.model.entities.UserProfile;
+=======
+>>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 =======
 >>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 import com.ecommerce.ecommerceapi.services.User_ServiceImpl;
@@ -39,15 +42,21 @@ public class UserController {
 
     @PostMapping(value="/signup")
 <<<<<<< HEAD
+<<<<<<< HEAD
     public ResponseEntity<User> signupUser(@RequestBody User user){
         //Creating URI that would be passed into the response entity .created method
         log.info("hey");
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/users/signup/user").toUriString());
 =======
+=======
+>>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
     public ResponseEntity<User> signup(@RequestBody User user){
         //Creating URI that would be passed into the response entity .created method
         log.info("hey");
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/users/signup").toUriString());
+<<<<<<< HEAD
+>>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
+=======
 >>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 
         return ResponseEntity.created(uri).body(user_service.saveUser(user));
