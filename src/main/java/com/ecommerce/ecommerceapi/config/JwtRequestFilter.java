@@ -8,13 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import org.springframework.stereotype.Component;
-=======
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
-=======
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -23,15 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 @Component
-=======
-
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
-=======
-
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private User_Service userService;

@@ -2,20 +2,10 @@ package com.ecommerce.ecommerceapi.services;
 
 import com.ecommerce.ecommerceapi.config.CustomAuthenticationFilter;
 import com.ecommerce.ecommerceapi.dao.UserDao;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.ecommerce.ecommerceapi.dao.UserProfileDao;
 import com.ecommerce.ecommerceapi.model.JwtRequest;
 import com.ecommerce.ecommerceapi.model.entities.User;
 import com.ecommerce.ecommerceapi.model.entities.UserProfile;
-=======
-import com.ecommerce.ecommerceapi.model.JwtRequest;
-import com.ecommerce.ecommerceapi.model.entities.User;
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
-=======
-import com.ecommerce.ecommerceapi.model.JwtRequest;
-import com.ecommerce.ecommerceapi.model.entities.User;
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,13 +30,7 @@ import java.util.ArrayList;
 @Slf4j
 public class User_ServiceImpl implements User_Service, UserDetailsService {
     private final UserDao userDao;
-<<<<<<< HEAD
-<<<<<<< HEAD
     private final UserProfileDao userProfileDao;
-=======
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
-=======
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
 
     @Autowired
     private  PasswordEncoder bCryptPasswordEncoder;
@@ -54,14 +38,8 @@ public class User_ServiceImpl implements User_Service, UserDetailsService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
-=======
->>>>>>> 108aa4b8e0946b60fd1463fd85a720a7eecd7e46
     @Override
     public User saveUser(User user) {
         log.info("Saving new user");
