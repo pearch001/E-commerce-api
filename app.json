@@ -1,5 +1,5 @@
 {
-  "name": "lizpea-eccom-proj",
+  "name": "lizpea-eccom-projs c",
   "env": {
     "JDBC_URL": {"required":  false},
     "JDBC_USER": {"required":  false},
