@@ -8,11 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
@@ -26,7 +22,6 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long price;
     private Long merchantId;
     private String productionCountry;
@@ -35,6 +30,11 @@ public class Product implements Serializable {
     private Double weight;
     private String keyFeatures;
     private String itemName;
+
+    //Many to one relationship
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 
 }
