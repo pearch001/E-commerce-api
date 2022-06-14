@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RequestMapping("/api/v1/product")
 @RestController
@@ -23,15 +24,25 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product){
+
+
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/product").toUriString());
 
         return ResponseEntity.created(uri).body(productService.saveProduct(product));
     }
 
+    @PutMapping
+    public
+
     @GetMapping("/{productName}")
-    public Product getProducts(
+    public List<Product> getProducts(
             @PathVariable("jobTitle") String jobTitle
     ){
         return productService.getProduct(jobTitle);
+    }
+
+    @GetMapping("")
+    public List<Product> listProducts(){
+        return productService.getProduct("");
     }
 }

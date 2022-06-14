@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface CategoryDao extends CrudRepository<Category, Long> {
     Category findById(Integer Id);
 
+    @Override
+    Optional<Category> findById(Long aLong);
 }

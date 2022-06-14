@@ -6,10 +6,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProductDao extends CrudRepository<Product, Long> {
     @Query("SELECT p FROM "
-            + "products p WHERE p.itemName = ?1")
-    Product findProducts (String productName);
+            + "products p WHERE p.itemName LIKE '%' + ?1 + '%'")
+    List<Product> findProducts (String productName);
+
+    @Override
+    Optional<Product> findById(Long aLong);
 }
