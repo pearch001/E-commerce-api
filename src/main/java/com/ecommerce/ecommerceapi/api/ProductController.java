@@ -32,7 +32,9 @@ public class ProductController {
     }
 
     @PutMapping
-    public
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product){
+
+    }
 
     @GetMapping("/{productName}")
     public List<Product> getProducts(
