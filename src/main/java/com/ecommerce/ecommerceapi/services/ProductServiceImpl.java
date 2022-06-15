@@ -54,31 +54,31 @@ public class ProductServiceImpl implements ProductService{
         productDto.setRatings(product.getRatings());
         productDto.setImageUrl(product.getImageUrl());
         productDto.setItemName(product.getItemName());
+        productDto.setId(product.getId());
         productDto.setCategoryId(product.getCategory().getId());
         return  productDto;
     }
 
     @Override
-    public void updateProduct(Product product) {
-        Optional<Category> category = categoryDao.findById(product.getCategory().getId());
+    public void updateProduct(ProductDto productDto) {
+        Optional<Category> category = categoryDao.findById(productDto.getCategoryId());
         if (category.isEmpty()){
             throw new IllegalStateException("Category not found");
         }
-        Optional<Product> optionalProduct = productDao.findById(product.getId());
+        Optional<Product> optionalProduct = productDao.findById(productDto.getId());
         if (optionalProduct.isEmpty()){
-            throw new IllegalStateException("Category not found");
+            throw new IllegalStateException("Product not found");
         }else {
 
-            Product updateProduct = productDao.findByID(product.getId());
-            updateProduct.setCategory(product.getCategory());
-            updateProduct.setImageUrl(product.getImageUrl());
-            updateProduct.setPrice(product.getPrice());
-            updateProduct.setProductionCountry(product.getProductionCountry());
-            updateProduct.setRatings(product.getRatings());
-            updateProduct.setWeight(product.getWeight());
-            updateProduct.setKeyFeatures(product.getKeyFeatures());
-            updateProduct.setMerchantId(product.getMerchantId());
-
+            Product updateProduct = productDao.findByID(productDto.getId());
+            updateProduct.setCategory(category.get());
+            updateProduct.setImageUrl(productDto.getImageUrl());
+            updateProduct.setPrice(productDto.getPrice());
+            updateProduct.setProductionCountry(productDto.getProductionCountry());
+            updateProduct.setRatings(productDto.getRatings());
+            updateProduct.setWeight(productDto.getWeight());
+            updateProduct.setKeyFeatures(productDto.getKeyFeatures());
+            updateProduct.setMerchantId(productDto.getMerchantId());
         }
 
     }

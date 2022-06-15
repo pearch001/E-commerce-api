@@ -36,8 +36,8 @@ public class ProductController {
     }
 
     @PutMapping
-    public ResponseEntity<ApiResponse> updateProduct(@RequestBody Product product){
-        productService.updateProduct(product);
+    public ResponseEntity<ApiResponse> updateProduct(@RequestBody ProductDto productDto){
+        productService.updateProduct(productDto);
         return new ResponseEntity<>(new ApiResponse(true,"Product Updated"), HttpStatus.OK);
     }
 

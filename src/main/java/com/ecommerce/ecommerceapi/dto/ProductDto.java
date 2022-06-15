@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDto {
+    private Long id;
     private Long price;
     private Long merchantId;
     private String productionCountry;
