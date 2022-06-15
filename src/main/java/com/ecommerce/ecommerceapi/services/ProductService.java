@@ -1,11 +1,14 @@
 package com.ecommerce.ecommerceapi.services;
 
+import com.ecommerce.ecommerceapi.dto.ProductDto;
 import com.ecommerce.ecommerceapi.model.entities.Product;
 
 import java.util.List;
 
 
 public interface ProductService {
-    Product saveProduct(Product product);
-    List<Product> getProduct(String productName);
+    Product saveProduct(ProductDto productDto);
+    void  updateProduct(Product product);
+    void deleteProduct(Product product);
+    List<ProductDto> getProduct(String productName);
 }

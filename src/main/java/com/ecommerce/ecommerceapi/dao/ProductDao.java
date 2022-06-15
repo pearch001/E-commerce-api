@@ -16,4 +16,7 @@ public interface ProductDao extends CrudRepository<Product, Long> {
 
     @Override
     Optional<Product> findById(Long aLong);
+    @Query("SELECT p FROM "
+            + "products p WHERE p.id = ?1")
+    Product findByID(Long id);
 }

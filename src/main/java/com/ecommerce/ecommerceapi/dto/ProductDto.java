@@ -16,6 +16,6 @@ public class ProductDto {
     private Double weight;
     private String keyFeatures;
     private String itemName;
-    private Integer categoryId;
+    private Long categoryId;
 
 }
