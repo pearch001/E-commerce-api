@@ -30,6 +30,7 @@ public class User implements Serializable {
     @Pattern(regexp= "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", message= "Kindly provide a valid email address")
     @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String username;
     private  String password;
     private String firstName;

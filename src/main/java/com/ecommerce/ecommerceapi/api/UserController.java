@@ -1,5 +1,6 @@
 package com.ecommerce.ecommerceapi.api;
 
+import com.ecommerce.ecommerceapi.exceptions.AuthenticationFailException;
 import com.ecommerce.ecommerceapi.model.JwtRequest;
 import com.ecommerce.ecommerceapi.model.JwtResponse;
 import com.ecommerce.ecommerceapi.model.entities.User;
@@ -50,7 +51,7 @@ public class UserController {
             log.info("login");
         }catch (BadCredentialsException e){
 
-            throw new Exception("Incorrect username or password",e);
+            throw new AuthenticationFailException("Incorrect username or password");
         }
         final UserDetails userDetails = user_service.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
