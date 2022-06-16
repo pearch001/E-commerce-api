@@ -3,6 +3,7 @@ package com.ecommerce.ecommerceapi.services;
 import com.ecommerce.ecommerceapi.dao.CategoryDao;
 import com.ecommerce.ecommerceapi.dao.ProductDao;
 import com.ecommerce.ecommerceapi.dto.ProductDto;
+import com.ecommerce.ecommerceapi.exceptions.CustomException;
 import com.ecommerce.ecommerceapi.model.entities.Category;
 import com.ecommerce.ecommerceapi.model.entities.Product;
 import lombok.RequiredArgsConstructor;
@@ -63,11 +64,11 @@ public class ProductServiceImpl implements ProductService{
     public void updateProduct(ProductDto productDto) {
         Optional<Category> category = categoryDao.findById(productDto.getCategoryId());
         if (category.isEmpty()){
-            throw new IllegalStateException("Category not found");
+            throw new CustomException("Category not found");
         }
         Optional<Product> optionalProduct = productDao.findById(productDto.getId());
         if (optionalProduct.isEmpty()){
-            throw new IllegalStateException("Product not found");
+            throw new CustomException("Product not found");
         }else {
 
             Product updateProduct = productDao.findByID(productDto.getId());

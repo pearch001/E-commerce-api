@@ -38,12 +38,23 @@ public class WishListController {
     }
 
     @GetMapping
-    public List<WishList> getWishlist(@RequestHeader(value = "Authorization") String authorizationHeader){
+    public List<ProductDto> getWishlist(@RequestHeader(value = "Authorization") String authorizationHeader){
         String username = null;
         String jwtToken = null;
         jwtToken = authorizationHeader.substring(7);
         username = jwtTokenUtil.getUsernameFromToken(jwtToken);
         return wishListService.getWishlist(username);
+    }
+
+    @DeleteMapping()
+    public ResponseEntity<ApiResponse> deleteFromWishlist(@RequestBody ProductDto productDto ,
+                                                      @RequestHeader(value = "Authorization") String authorizationHeader){
+        String username = null;
+        String jwtToken = null;
+        jwtToken = authorizationHeader.substring(7);
+        username = jwtTokenUtil.getUsernameFromToken(jwtToken);
+        wishListService.deleteProductFromWishList(productDto,username);
+        return new ResponseEntity<>(new ApiResponse(true,"Product deleted from wishlist"), HttpStatus.OK);
     }
 
 }

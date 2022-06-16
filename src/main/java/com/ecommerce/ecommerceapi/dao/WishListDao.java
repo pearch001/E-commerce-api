@@ -15,5 +15,9 @@ public interface WishListDao extends CrudRepository<WishList,Long> {
             + "wishlist w WHERE w.product_id = ?1")
     Boolean findByProductId(Long id);
 
+    @Query("SELECT w FROM "
+            + "wishlist w WHERE w.product_id = ?1")
+    WishList selectByProductID(Long id);
+
     List<WishList> findAllByUserOrderByCreatedDateDesc(User user);
 }

@@ -12,6 +12,7 @@ import com.ecommerce.ecommerceapi.model.entities.User;
 import com.ecommerce.ecommerceapi.model.entities.WishList;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,11 +45,28 @@ public class WishListServiceImpl implements WishListServiceInt{
     public List<ProductDto> getWishlist(String username) {
         User user = userDao.findByUsername(username);
         List<WishList> wishLists = wishListDao.findAllByUserOrderByCreatedDateDesc(user);
-        return wishListDao.findAllByUserOrderByCreatedDateDesc(user);
+        List<ProductDto> productDtos = new ArrayList<>();
+        for(WishList wishList : wishLists){
+            Optional<Product> optionalProduct = productDao.findById(wishList.getProduct().getId());
+            if (optionalProduct.isEmpty()){
+                throw new CustomException("Product not found");
+            }else {
+                productDtos.add(getProductDto(optionalProduct.get()));
+            }
+        }
+        return productDtos;
     }
 
     @Override
-    public void deleteProductFromWishList(ProductDto productDto) {
+    public void deleteProductFromWishList(ProductDto productDto, String username) {
+        User user = userDao.findByUsername(username);
+        Boolean isProductInWishlist = wishListDao.findByProductId(productDto.getId());
+        if (!isProductInWishlist){
+            throw new CustomException("Product is not in wishlist");
+        }else{
+            WishList wishList = wishListDao.selectByProductID(productDto.getId());
+            wishListDao.delete(wishList);
+        }
 
     }
 
@@ -68,5 +86,20 @@ public class WishListServiceImpl implements WishListServiceInt{
         product.setItemName(productDto.getItemName());
         product.setCategory(category.get());
         return  product;
+    }
+
+    public ProductDto getProductDto(Product product){
+        ProductDto productDto = new ProductDto();
+        productDto.setMerchantId(product.getMerchantId());
+        productDto.setKeyFeatures(product.getKeyFeatures());
+        productDto.setProductionCountry(product.getProductionCountry());
+        productDto.setPrice(product.getPrice());
+        productDto.setWeight(product.getWeight());
+        productDto.setRatings(product.getRatings());
+        productDto.setImageUrl(product.getImageUrl());
+        productDto.setItemName(product.getItemName());
+        productDto.setId(product.getId());
+        productDto.setCategoryId(product.getCategory().getId());
+        return  productDto;
     }
 }
