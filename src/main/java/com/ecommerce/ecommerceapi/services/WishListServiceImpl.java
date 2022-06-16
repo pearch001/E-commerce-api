@@ -47,12 +47,7 @@ public class WishListServiceImpl implements WishListServiceInt{
         List<WishList> wishLists = wishListDao.findAllByUserOrderByCreatedDateDesc(user);
         List<ProductDto> productDtos = new ArrayList<>();
         for(WishList wishList : wishLists){
-            Optional<Product> optionalProduct = productDao.findById(wishList.getProduct().getId());
-            if (optionalProduct.isEmpty()){
-                throw new CustomException("Product not found");
-            }else {
-                productDtos.add(getProductDto(optionalProduct.get()));
-            }
+            productDtos.add(getProductDto(wishList.getProduct()));
         }
         return productDtos;
     }
