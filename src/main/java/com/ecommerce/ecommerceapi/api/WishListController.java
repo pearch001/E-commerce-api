@@ -53,7 +53,7 @@ public class WishListController {
         String jwtToken = null;
         jwtToken = authorizationHeader.substring(7);
         username = jwtTokenUtil.getUsernameFromToken(jwtToken);
-        wishListService.deleteProductFromWishList(productDto,username);
+        wishListService.deleteProductFromWishList(productDto);
         return new ResponseEntity<>(new ApiResponse(true,"Product deleted from wishlist"), HttpStatus.OK);
     }
 

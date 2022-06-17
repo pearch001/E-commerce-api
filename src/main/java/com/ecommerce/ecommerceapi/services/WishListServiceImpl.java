@@ -61,8 +61,8 @@ public class WishListServiceImpl implements WishListServiceInt{
     }
 
     @Override
-    public void deleteProductFromWishList(ProductDto productDto, String username) {
-        User user = userDao.findByUsername(username);
+    public void deleteProductFromWishList(ProductDto productDto) {
+
         Boolean isProductInWishlist = wishListDao.findByProductId(productDto.getId());
         if (!isProductInWishlist){
             throw new CustomException("Product is not in wishlist");

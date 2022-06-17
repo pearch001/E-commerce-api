@@ -6,7 +6,9 @@ import com.ecommerce.ecommerceapi.dto.AddToCartDto;
 import com.ecommerce.ecommerceapi.dto.CartDto;
 import com.ecommerce.ecommerceapi.dto.CartItemDto;
 import com.ecommerce.ecommerceapi.dto.ProductDto;
+import com.ecommerce.ecommerceapi.exceptions.CartItemNotExistException;
 import com.ecommerce.ecommerceapi.exceptions.CustomException;
+import com.ecommerce.ecommerceapi.exceptions.ProductNotExistException;
 import com.ecommerce.ecommerceapi.model.entities.Cart;
 import com.ecommerce.ecommerceapi.model.entities.Product;
 import com.ecommerce.ecommerceapi.model.entities.User;
@@ -19,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -55,13 +58,23 @@ public class CartServiceImpl implements CartServiceInt{
         for(Cart cart : carts){
             CartItemDto cartItemDto = new CartItemDto(cart.getId(),cart.getQuantity(),productService.getProductDto(cart.getProduct()));
             cartItemDtos.add(cartItemDto);
-            totalCost =+ cart.getQuantity() * cart.getProduct().getPrice();
+            totalCost += cart.getQuantity() * cart.getProduct().getPrice();
         }
         return new CartDto(cartItemDtos,totalCost);
     }
 
     @Override
-    public void deleteItemFromCart(ProductDto productDto) {
+    public void deleteItemFromCart(CartItemDto cartItemDto) throws CartItemNotExistException {
+        Cart cart = getCartItem(cartItemDto.getId());
+        cartDao.delete(cart);
+    }
 
+    public Cart getCartItem(Long id) throws CartItemNotExistException {
+        Optional<Cart> optionalCart = cartDao.findById(id );
+        if (optionalCart.isEmpty()){
+            throw new CartItemNotExistException("Item not found in Cart");
+        }else {
+            return optionalCart.get();
+        }
     }
 }

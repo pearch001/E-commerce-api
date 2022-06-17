@@ -9,5 +9,5 @@ public interface WishListServiceInt {
 
     void saveWishList(ProductDto productDto, String username);
     List<ProductDto> getWishlist(String username);
-    void deleteProductFromWishList(ProductDto productDto, String username);
+    void deleteProductFromWishList(ProductDto productDto);
 }

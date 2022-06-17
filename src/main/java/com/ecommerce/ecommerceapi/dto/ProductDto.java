@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class ProductDto {
     private Long id;
-    private Long price;
+    private double price;
     private Long merchantId;
     private String productionCountry;
     private String imageUrl;

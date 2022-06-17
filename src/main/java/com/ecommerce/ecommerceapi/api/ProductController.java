@@ -2,6 +2,7 @@ package com.ecommerce.ecommerceapi.api;
 
 import com.ecommerce.ecommerceapi.common.ApiResponse;
 import com.ecommerce.ecommerceapi.dao.ProductDao;
+import com.ecommerce.ecommerceapi.dto.CartDto;
 import com.ecommerce.ecommerceapi.dto.ProductDto;
 import com.ecommerce.ecommerceapi.model.Response;
 import com.ecommerce.ecommerceapi.model.entities.Product;
@@ -42,15 +43,15 @@ public class ProductController {
     }
 
     @GetMapping("/{productName}")
-    public List<ProductDto> getProducts(
+    public ResponseEntity<List<ProductDto>> getProducts(
             @PathVariable("jobTitle") String jobTitle
     ){
-        return productService.getProducts(jobTitle);
+        return new ResponseEntity<>(productService.getProducts(jobTitle), HttpStatus.OK);
     }
 
     @GetMapping("")
-    public List<ProductDto> listProducts(){
-        return productService.getProducts("");
+    public ResponseEntity<List<ProductDto>> listProducts(){
+        return new ResponseEntity<>(productService.getProducts(""), HttpStatus.OK) ;
     }
 
     @DeleteMapping("")
