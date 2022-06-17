@@ -45,12 +45,12 @@ public class ProductController {
     public List<ProductDto> getProducts(
             @PathVariable("jobTitle") String jobTitle
     ){
-        return productService.getProduct(jobTitle);
+        return productService.getProducts(jobTitle);
     }
 
     @GetMapping("")
     public List<ProductDto> listProducts(){
-        return productService.getProduct("");
+        return productService.getProducts("");
     }
 
     @DeleteMapping("")

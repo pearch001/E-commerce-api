@@ -22,7 +22,7 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long price;
+    private double price;
     private Long merchantId;
     private String productionCountry;
     private String imageUrl;

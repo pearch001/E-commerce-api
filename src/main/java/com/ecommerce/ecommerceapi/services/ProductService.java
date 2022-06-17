@@ -10,5 +10,5 @@ public interface ProductService {
     Product saveProduct(ProductDto productDto);
     void  updateProduct(ProductDto productDto);
     void deleteProduct(Product product);
-    List<ProductDto> getProduct(String productName);
+    List<ProductDto> getProducts(String productName);
 }

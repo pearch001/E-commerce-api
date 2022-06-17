@@ -4,6 +4,7 @@ import com.ecommerce.ecommerceapi.dao.CategoryDao;
 import com.ecommerce.ecommerceapi.dao.ProductDao;
 import com.ecommerce.ecommerceapi.dto.ProductDto;
 import com.ecommerce.ecommerceapi.exceptions.CustomException;
+import com.ecommerce.ecommerceapi.exceptions.ProductNotExistException;
 import com.ecommerce.ecommerceapi.model.entities.Category;
 import com.ecommerce.ecommerceapi.model.entities.Product;
 import lombok.RequiredArgsConstructor;
@@ -88,23 +89,32 @@ public class ProductServiceImpl implements ProductService{
     public void deleteProduct(Product product) {
         Optional<Category> category = categoryDao.findById(product.getCategory().getId());
         if (category.isEmpty()){
-            throw new IllegalStateException("Category not found");
+            throw new CustomException("Category not found");
         }
         Optional<Product> optionalProduct = productDao.findById(product.getId());
         if (optionalProduct.isEmpty()){
-            throw new IllegalStateException("Category not found");
+            throw new ProductNotExistException("Product not found");
         }else {
             productDao.delete(product);
         }
     }
 
     @Override
-    public List<ProductDto> getProduct(String productName) {
+    public List<ProductDto> getProducts(String productName) {
         List<Product> products = productDao.findProducts(productName);
         List<ProductDto> productDtos = new ArrayList<>();
         for(Product product : products){
             productDtos.add(getProductDto(product));
         }
         return productDtos;
+    }
+
+    public Product getProduct(Long id){
+        Optional<Product> optionalProduct = productDao.findById(id );
+        if (optionalProduct.isEmpty()){
+            throw new ProductNotExistException("Product not found");
+        }else {
+            return optionalProduct.get();
+        }
     }
 }
